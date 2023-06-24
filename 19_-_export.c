@@ -14,13 +14,13 @@ int	ft_export(char **command, t_redirects redir, t_env **env, int exit_status)
 			if (ft_check_var_name(*command))
 			{
 				if (insert_change_list(&*command, env) == 12)
-					return (print_format_error("No more memory", 12));
+					return (print_format_error("No more memory (´～`)", 12));
 			}
 			else
 			{
 				exit_status = 1;
 				print_arg_error("export", *command++, "not a valid identifier"\
-										, 1);
+				" (x . x) ~~zzZ"	, 1);
 			}
 		}
 	}

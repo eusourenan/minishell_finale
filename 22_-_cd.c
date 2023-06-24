@@ -10,10 +10,10 @@ int	ft_cd(char **command, t_redirects redir, t_env **env, int exit_status)
 	{
 		home = get_value_of_var("HOME", env, exit_status);
 		if (!home)
-			return (print_error(*command, "HOME not set", 1));
+			return (print_error(*command, "HOME not set (＠´ー`)ﾉﾞ", 1));
 	}
 	else if (command[2])
-		return (print_error(*command, "too many arguments", 1));
+		return (print_error(*command, "too many arguments ┬┴┬┴┤(･_├┬┴┬┴", 1));
 	else
 		home = command[1];
 	if (chdir(home))

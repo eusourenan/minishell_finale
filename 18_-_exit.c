@@ -69,8 +69,8 @@ void	print_exit_error(char *argument)
 
 	message = ft_strjoin("exit: ", argument);
 	if (!message)
-		message = "exit error";
-	print_error(message, "Numeric argument required", 2);
+		message = "exit error Σ(O_O)";
+	print_error(message, "Numeric argument required ─=≡Σ((( つ＞＜)つ", 2);
 	if (strncmp(message, "exit ", 5))
 		free(message);
 }
@@ -82,7 +82,7 @@ int	ft_exit(char **command, t_redirects redir, t_env **env, int exit_status)
 	if (!command || !command[1])
 		num = 0;
 	else if (is_valid_number(command[1]) && command[2] != NULL)
-		return (print_error(command[0], "Too many arguments", 1));
+		return (print_error(command[0], "Too many arguments （´○｀）～ゝ", 1));
 	else if (is_valid_number(command[1]))
 		num = ft_atoll(command[1]);
 	else

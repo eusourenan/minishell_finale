@@ -43,7 +43,7 @@ int	ft_unset(char **command, t_redirects redir, t_env **env, int exit_status)
 		else
 		{
 			exit_status = 1;
-			print_arg_error("unset", *command, "not a valid identifier", 1);
+			print_arg_error("unset", *command, "not a valid identifier XD", 1);
 		}
 	}
 	return (exit_status);

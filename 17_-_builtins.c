@@ -76,12 +76,12 @@ int ft_pwd(char **command, t_redirects redir, t_env **env, int exit_status)
 		return (12);
 	pwd = getcwd(0, 0);
 	if (!pwd)
-		return (print_format_error("Buffer is NULL.", 12));
+		return (print_format_error("Buffer is NULL. ┐(￣ヘ￣;)┌", 12));
 	if (ft_strlen(pwd) > 4096)
-		ft_putendl_fd("File name id too long!", 2);
+		ft_putendl_fd("File name id too long! (＠_＠)", 2);
 	ft_putendl_fd(pwd, redir.fd_output);
 	if (command[1])
-		print_format_error("ignoring the rest, man!\n", 2);
+		print_format_error("ignoring the rest, man! (ーー;)\n", 2);
 	free(pwd);
 	return (0);
 	(void)(env);
