@@ -1,20 +1,23 @@
 #include "minishell.h"
 
-void	free_list(t_env **list)
+void	free_node(t_env **list)
 {
 	t_env	*aux;
 
+	if (!list || !*list)
+		return;
+	aux = *list;
+	*list = aux->next;
+	free(aux->var);
+	free(aux);
+}
+
+void	free_list(t_env **list)
+{
 	if (list == NULL)
 		return ;
-	aux = *list;
-	while (aux)
-	{
-		free(aux->var);
-		*list = aux->next;
-		free(aux);
-		aux = NULL;
-		aux = *list;
-	}
+	while (*list)
+		free_node(list);
 }
 
 void	add_back(t_env **list, t_env *node)
