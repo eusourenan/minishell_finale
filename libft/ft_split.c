@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:11:22 by rleite-s          #+#    #+#             */
-/*   Updated: 2023/06/24 13:38:30 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/24 15:05:08 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	count_words(const char *s, char c)
 		while (*s == c && *s)
 			s++;
 		if (!*s)
-			break;
+			break ;
 		words++;
 		while (*s != c && *s)
 			s++;
@@ -48,7 +48,7 @@ char	**ft_split(const char *s, char c)
 		while (*s == c && *s)
 			s++;
 		if (!*s)
-			break;
+			break ;
 		end = (char *)s;
 		while (*end != c && *end)
 			end++;

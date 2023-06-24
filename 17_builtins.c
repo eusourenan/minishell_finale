@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   17_builtins.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:13:21 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:18:25 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 void	*set_builtin(char **command)
@@ -68,7 +80,7 @@ int	ft_echo(char **command, t_redirects redir, t_env **env, int exit_status)
 	(void)env;
 }
 
-int ft_pwd(char **command, t_redirects redir, t_env **env, int exit_status)
+int	ft_pwd(char **command, t_redirects redir, t_env **env, int exit_status)
 {
 	char	*pwd;
 
@@ -94,7 +106,7 @@ int	ft_env(char **command, t_redirects redir, t_env **env, int exit_status)
 	t_env	*aux;
 
 	if (!command)
-		return 0;
+		return (0);
 	if (command[1] != NULL)
 	{
 		error_message = "YOU JUST HAVE ONE JOB! Read The F*@# PDF!!!"\

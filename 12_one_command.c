@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   12_one_command.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:12:35 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:17:33 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	execute_one_command(char **cmd, t_env **env, int exit_s, int fd_heredoc)
@@ -64,13 +76,13 @@ int	has_vars(char *command)
 			while (*command && *command != '"')
 			{
 				if (*command == '$' && (command[1] == '_'
-					|| ft_isalpha(command[1])))
+						|| ft_isalpha(command[1])))
 					return (1);
 				command++;
 			}
 		}
 		if (*command == '$' && (command[1] == '_' || ft_isalpha(command[1])))
-					return (1);
+			return (1);
 		command++;
 	}
 	return (0);

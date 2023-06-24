@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   7_heredocs.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:11:29 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:16:14 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
-int	set_heredocs_and_execute
-(char **commands, t_env **env, int exit_status, int *heredocs)
+int	set_heredocs_and_execute(char **commands, t_env **env, int exit_status, \
+					int *heredocs)
 {
 	int	ret_check_heredocs;
 	int	heredoc;
@@ -14,8 +26,8 @@ int	set_heredocs_and_execute
 		return (ret_check_heredocs);
 	}
 	if (commands[1])
-		exit_status = prepare_multiple_commands\
-		(commands, env, exit_status, heredocs);
+		exit_status = prepare_multiple_commands(commands, env, exit_status, \
+								heredocs);
 	else
 	{
 		heredoc = heredocs[0];
@@ -52,8 +64,7 @@ int	set_heredocs(char **commands, t_env **env, int exit_status, int *heredocs)
 	return (exit_status);
 }
 
-int	get_all_heredocs
-(char *input, t_env **env, int *fd_hdoc, t_vars *to_free) 
+int	get_all_heredocs(char *input, t_env **env, int *fd_hdoc, t_vars *to_free)
 {
 	int		pid;
 	int		pipes[2];
@@ -95,8 +106,8 @@ char	*get_heredoc_position(char *input)
 	return (NULL);
 }
 
-char	*hdoc_delimiter_pipes_fork
-(char *input, int pipes[], int *pid, int *fd_heredoc)
+char	*hdoc_delimiter_pipes_fork(char *input, int pipes[], int *pid, \
+					int *fd_heredoc)
 {
 	if (*pid)
 		ft_close(*fd_heredoc, STDIN_FILENO);

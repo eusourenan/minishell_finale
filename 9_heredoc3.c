@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   9_heredoc3.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:12:19 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:17:01 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	wait_heredoc(int pid, int *fd_heredoc, int pipes[], t_vars *to_free)
@@ -30,7 +42,7 @@ void	execute_heredoc(int fd, int expandble, char *key, t_env **env)
 			return ;
 		}
 		if (ft_strcmp(key, input) == 0)
-			break ; 
+			break ;
 		if (expandble >> 8 == 0)
 			input = expand_variables(input, env, expandble);
 		ft_putendl_fd(input, fd);

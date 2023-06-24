@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   24_print_functions.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:13:56 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:22:45 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	print_format_error(char *message, int exit_status)
@@ -47,29 +59,18 @@ int	print_arg_error(char *command, char *arg, char *error, int exit_status)
 {
 	char	*message;
 
-	message = ft_strjoin("minishell: ", command);
-	if (!message)
-		return (print_format_error("No more memory\n", 12));
-	command = ft_strjoin(message, ": `");
-	free(message);
-	if (!command)
-		return (print_format_error("No more memory\n", 12));
-	message = ft_strjoin(command, arg);
-	free(command);
+	message = ft_strjoin("`", arg);
 	if (!message)
 		return (print_format_error("No more memory\n", 12));
 	arg = ft_strjoin(message, ": ");
 	free(message);
 	if (!arg)
 		return (print_format_error("No more memory\n", 12));
-	command = ft_strjoin(arg, error);
+	message = ft_strjoin(arg, error);
 	free(arg);
-	if (!command)
-		return (print_format_error("No more memory\n", 12));
-	message = ft_strjoin(command, ", dude! ヽ(T-T )ノ\n");
 	if (!message)
 		return (print_format_error("No more memory\n", 12));
-	exit_status = print_format_error(message, exit_status);
+	exit_status = print_error(command, message, exit_status);
 	free(message);
 	return (exit_status);
 }

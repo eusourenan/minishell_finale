@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   4_input_checker.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:10:57 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:15:41 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	has_input_error(char *input)
@@ -24,7 +36,7 @@ int	ft_is_only_spaces(char *input)
 		return (1);
 	if (!*input)
 		return (0);
-	while(*input)
+	while (*input)
 	{
 		if (ft_isspace(*input) == 1)
 			input++;

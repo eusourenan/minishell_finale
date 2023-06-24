@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   19_export.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:13:29 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:19:10 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	ft_export(char **command, t_redirects redir, t_env **env, int exit_status)
@@ -20,7 +32,7 @@ int	ft_export(char **command, t_redirects redir, t_env **env, int exit_status)
 			{
 				exit_status = 1;
 				print_arg_error("export", *command++, "not a valid identifier"\
-				" (x . x) ~~zzZ"	, 1);
+				" (x . x) ~~zzZ", 1);
 			}
 		}
 	}
@@ -29,20 +41,20 @@ int	ft_export(char **command, t_redirects redir, t_env **env, int exit_status)
 
 void	print_export(t_env *env, int output_fd)
 {
-	int i;
+	int	i;
 
 	while (env)
 	{
 		ft_putstr_fd("declare -x ", output_fd);
 		i = 0;
-		while(env->var[i] != '=' && env->var[i] != '\0')
+		while (env->var[i] != '=' && env->var[i] != '\0')
 			ft_putchar_fd(env->var[i++], output_fd);
 		if (env->var[i] != '\0')
 		{
 			write(output_fd, "=", 1);
 			write(output_fd, "\"", 1);
 			i++;
-			while(env->var[i] != '\0')
+			while (env->var[i] != '\0')
 			{
 				ft_putchar_fd(env->var[i], output_fd);
 				i++;
@@ -56,7 +68,7 @@ void	print_export(t_env *env, int output_fd)
 
 int	ft_check_var_name(char *start_var_name)
 {
-	char *end_var_name;
+	char	*end_var_name;
 
 	end_var_name = start_var_name;
 	while (*end_var_name != '=' && *end_var_name)

@@ -3,15 +3,15 @@ NAME		:=	minishell
 FLAGS		=	-Wall -Werror -Wextra -g
 READLINE	=	-lreadline
 
-FILES		=	0_-_main 1_-_env 2_-_list 3_-_minishell 4_-_input_checker\
-				5_-_normalize_input 6_-_normalize_command 7_-_heredocs\
-				8_-_heredocs2 9_-_heredoc3 10_-_multiple_commands\
-				11_-_multiple_commands1 12_-_one_command\
-				13_-_prepare_expansions 14_-_var_expansions 15_-_fds\
-				16_-_check_fds 17_-_builtins 18_-_exit 19_-_export\
-				20_-_export2 21_-_unset 22_-_cd 23_-_external_command\
-				24_-_print_functions 25_-_utils 26_-_dup_and_close\
-				27_-_tilde_expansion _signals _split_commands
+FILES		=	0_main 1_env 2_list 3_minishell 4_input_checker\
+				5_normalize_input 6_normalize_command 7_heredocs\
+				8_heredocs2 9_heredoc3 10_multiple_commands\
+				11_multiple_commands1 12_one_command\
+				13_prepare_expansions 14_var_expansions 15_fds\
+				16_check_fds 17_builtins 18_exit 19_export\
+				20_export2 21_unset 22_cd 23_external_command\
+				24_print_functions 25_utils 26_dup_and_close\
+				27_tilde_expansion _signals _split_commands
 
 OBJS		=	$(addsuffix .o, $(FILES))
 
@@ -37,7 +37,7 @@ clean:
 	@make -C libft clean
 
 fclean: clean
-	$(RM) $(NAME) $(LIBFT) supp feedback
+	$(RM) $(NAME) $(LIBFT) supp logs
 
 re: fclean all
 
@@ -45,10 +45,7 @@ re: fclean all
 
 v: supp all
 	clear
-	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --trace-children=yes --trace-children-skip=''*/bin/*,*/sbin/*'' --suppressions=supp --track-fds=yes --log-file=feedback ./minishell
-
-file:
-	@echo '#include "minishell.h"' '\n' > '$(f)' && code '$(f)'
+	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --trace-children=yes --trace-children-skip=''*/bin/*,*/sbin/*'' --suppressions=supp --track-fds=yes --log-file=logs ./minishell
 
 supp:
 	@printf "{\n\

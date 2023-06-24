@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   15_fds.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:13:11 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:18:03 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	get_fds(char **splitted, t_env **env, t_redirects *redir, int fd_heredoc)
@@ -10,11 +22,11 @@ int	get_fds(char **splitted, t_env **env, t_redirects *redir, int fd_heredoc)
 	return (0);
 }
 
-int get_read_write_fds
-(char **command, t_env **env, t_redirects *redir, int fd_heredoc)
+int	get_read_write_fds(char **command, t_env **env, t_redirects *redir, \
+					int fd_heredoc)
 {
 	redir->redirects = NULL;
-	redir->fd_heredoc = fd_heredoc; 
+	redir->fd_heredoc = fd_heredoc;
 	redir->fd_input = 0;
 	redir->fd_output = 1;
 	get_redirects(command, env, redir, 0);
@@ -35,8 +47,8 @@ int get_read_write_fds
 	return (0);
 }
 
-void	get_redirects
-(char **command, t_env **env, t_redirects *redirect, int exit_status)
+void	get_redirects(char **command, t_env **env, t_redirects *redirect, \
+					int exit_status)
 {
 	char	**temp;
 	t_env	*aux;

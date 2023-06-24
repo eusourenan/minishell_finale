@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   23_external_command.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:13:50 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:22:44 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
-int	execute_external_command
-(char **cmd, t_env **env, int exit_status, t_redirects red)
+int	execute_external_command(char **cmd, t_env **env, int exit_status, \
+				t_redirects red)
 {
 	exit_status = fork();
 	execution_signals(exit_status);
@@ -45,7 +57,7 @@ int	set_path(char **command, t_env **env, int exit_status)
 	{
 		path_var = join_path(paths[index], *command);
 		if (!path_var || access(path_var, 0) == 0)
-			break;
+			break ;
 		free(path_var);
 	}
 	index = (paths[index] != NULL);
@@ -74,18 +86,18 @@ char	*join_path(char *path_init, char *path_end)
 
 int	check_file_path_access(char *path, int permission)
 {
-	struct stat path_stat;
+	struct stat	path_stat;
 
 	if (!path)
 		return (127);
-    stat(path, &path_stat);
+	stat(path, &path_stat);
 	if (access(path, F_OK) || !ft_strchr(path, '/'))
-		return (127); // No such file/directory
+		return (127);
 	if (access(path, permission))
-		return (126); // Permission denied
+		return (126);
 	if (S_ISDIR(path_stat.st_mode))
-		return (125); // Is a directory
-	return (0); // File com execution
+		return (125);
+	return (0);
 }
 
 int	set_envp_and_execute(char **command, t_env **env)

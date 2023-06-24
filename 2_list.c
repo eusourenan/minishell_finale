@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   2_list.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:10:26 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:22:56 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	free_node(t_env **list)
@@ -5,7 +17,7 @@ void	free_node(t_env **list)
 	t_env	*aux;
 
 	if (!list || !*list)
-		return;
+		return ;
 	aux = *list;
 	*list = aux->next;
 	free(aux->var);

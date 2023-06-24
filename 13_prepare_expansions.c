@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   13_prepare_expansions.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:12:58 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:17:41 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	expand_all(char **commands, t_env **env, int exit_status)
@@ -10,8 +22,8 @@ int	expand_all(char **commands, t_env **env, int exit_status)
 		var = 0;
 		if (**commands == '$')
 			var = 1;
-		expanded = make_expansions_and_remove_quotes\
-					(*commands, env, exit_status);
+		expanded = make_expansions_and_remove_quotes(*commands, env, \
+								exit_status);
 		if (!expanded)
 			return (12);
 		if (expanded != *commands && !*expanded && var)
@@ -27,8 +39,8 @@ int	expand_all(char **commands, t_env **env, int exit_status)
 	return (0);
 }
 
-char	*make_expansions_and_remove_quotes
-(char *input, t_env **env, int exit_status)
+char	*make_expansions_and_remove_quotes(char *input, t_env **env, \
+					int exit_status)
 {
 	char	*temp;
 
@@ -37,7 +49,7 @@ char	*make_expansions_and_remove_quotes
 		input = tilde_expansion(input, env);
 		ft_modify_quotemarks_to_remove(input, "'\"");
 		temp = input;
-		input = expand_variables(input, env, exit_status); 
+		input = expand_variables(input, env, exit_status);
 		if (!input)
 		{
 			free(temp);
@@ -72,9 +84,10 @@ void	ft_modify_quotemarks_to_remove(char *input, char *set)
 
 int	get_index(char c, char *s)
 {
-	int	index = 0;
+	int	index;
 
-	while(s && s[index])
+	index = 0;
+	while (s && s[index])
 	{
 		if (c == s[index])
 			return (index);

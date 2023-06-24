@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   14_var_expansions.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:13:05 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:17:54 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 char	*find_var(char *input)
@@ -13,7 +25,7 @@ char	*find_var(char *input)
 		else if (-*input > 0 && *input == -2)
 		{
 			while (*++input != -2)
-				if (*input == '$' &&\
+				if (*input == '$' && \
 				(ft_isalpha(input[1]) || input[1] == '_' || input[1] == '?'))
 					return (input + 1);
 		}

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   6_normalize_command.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:11:24 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:16:06 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
-int		normalize_command(char *input, t_env **env, int exit_status)
+int	normalize_command(char *input, t_env **env, int exit_status)
 {
 	char	**commands;
 	int		*heredocs;
@@ -26,7 +38,7 @@ int		normalize_command(char *input, t_env **env, int exit_status)
 	return (set_heredocs_and_execute(commands, env, exit_status, heredocs));
 }
 
-int number_of_redirects(char *str)
+int	number_of_redirects(char *str)
 {
 	int		i;
 	int		count;
@@ -65,7 +77,7 @@ char	*redirect(char *str)
 	if (!newstr)
 		return (NULL);
 	new_aux = newstr;
-	while(*str != '\0')
+	while (*str != '\0')
 	{
 		if (*str == '\'' || *str == '"')
 		{
@@ -94,10 +106,10 @@ char	*put_minus_five_after_redirects(char *str)
 	if (!newstr)
 		return (NULL);
 	new_aux = newstr;
-	while(*str)
+	while (*str)
 	{
 		*newstr = *str;
-		if (str > start && (((str[-1] == '<' || str[-1] == '>') && str[1] &&\
+		if (str > start && (((str[-1] == '<' || str[-1] == '>') && str[1] && \
 		(*str != '<' && *str != '>') && (*str != ' ' || *str++ == ' '))))
 			*newstr++ = -5;
 		if (*str == '\'' || *str == '"')

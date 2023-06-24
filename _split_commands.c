@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   _split_commands.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/24 15:09:52 by  rleite-s         #+#    #+#             */
+/*   Updated: 2023/06/24 15:22:53 by  rleite-s        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h" 
 
 int	count_pipes(char *input)
@@ -55,7 +67,7 @@ char	**split_commands(char *input)
 	if (input == NULL)
 		return (NULL);
 	line = 0;
-	commands = (char **) malloc ((count_pipes(input) + 2) * sizeof(char*));
+	commands = (char **) malloc ((count_pipes(input) + 2) * sizeof(char *));
 	if (commands == NULL)
 		return (NULL);
 	commands = insert_command(input, commands);
