@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:13:50 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 17:45:12 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/25 15:45:18 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int	set_envp_and_execute(char **command, t_env **env)
 	if (!envp)
 		return (12);
 	execve(command[0], command, envp);
-	free_matrix(envp);
+	free(envp);
 	return (1);
 }
