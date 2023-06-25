@@ -6,26 +6,34 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:13:33 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:19:14 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/25 03:30:28 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h" 
+
+void	insert_or_ignore(char **command, t_env *node)
+{
+	if (ft_strchr(*command, '='))
+	{
+		free(node->var);
+		node->var = *command;
+		adjust_commands(command);
+	}
+	else
+	{
+		free(*command);
+		adjust_commands(command);
+	}
+}
 
 int	insert_change_list(char **command, t_env **env)
 {
 	t_env	*node;
 
 	node = var_is_in_list(*command, env);
-	if (node)
-	{
-		if (ft_strchr(*command, '='))
-		{
-			free(node->var);
-			node->var = *command;
-			adjust_commands(&*command);
-		}
-	}
+	if (node && node != (t_env *)12)
+		insert_or_ignore(command, node);
 	else if (!node)
 	{
 		node = ft_calloc(1, sizeof(t_env));
