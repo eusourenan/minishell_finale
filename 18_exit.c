@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:13:25 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:19:12 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/25 16:06:52 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	is_valid_number(char *s)
 		s++;
 	if (len == 19 && numb_fits_max_long(numb_begin, sign) == 0)
 		return (0);
-	return (!*s);
+	return (!*s && s > numb_begin);
 }
 
 void	print_exit_error(char *argument)
@@ -83,7 +83,7 @@ void	print_exit_error(char *argument)
 	if (!message)
 		message = "exit error Σ(O_O)";
 	print_error(message, "Numeric argument required ─=≡Σ((( つ＞＜)つ", 2);
-	if (strncmp(message, "exit ", 5))
+	if (ft_strncmp(message, "exit ", 5))
 		free(message);
 }
 
