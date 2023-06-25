@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:11:42 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:11:43 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/25 02:46:14 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**insert_command(char *input, char **commands);
 int		count_pipes(char *input);
 
 // main.c
-void	set_shlvl(char **envp);
+void	set_shlvl(t_env *env);
 int		main(int argc, char **argv, char **envp);
 
 // env.c
