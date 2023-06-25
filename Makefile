@@ -45,7 +45,7 @@ re: fclean all
 
 v: supp all
 	clear
-	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --trace-children=yes --trace-children-skip=''*/bin/*,*/sbin/*'' --suppressions=supp --track-fds=yes --log-file=logs ./minishell
+	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes --trace-children=yes --trace-children-skip=''*/bin/*,*/sbin/*'' --suppressions=supp --track-fds=yes --keep-debuginfo=yes --log-file=logs --tool=memcheck ./minishell
 
 supp:
 	@printf "{\n\

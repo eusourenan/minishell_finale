@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:12:19 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:17:01 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/24 20:58:58 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	execute_heredoc(int fd, int expandble, char *key, t_env **env)
 			if (!error)
 				error = "end-of-line inserted from nowhere";
 			print_error("warning", error, 0);
-			if (!ft_strncmp(error, "end", 3))
+			if (ft_strncmp(error, "end", 3))
 				free(error);
 			return ;
 		}

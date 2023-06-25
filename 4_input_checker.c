@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:10:57 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:15:41 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/24 20:31:39 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	has_input_error(char *input)
 	find_comment(input);
 	if (ft_is_only_spaces(input))
 		return (1);
+	ft_adjust_delimiters(input);
 	if (ft_has_invalid_pipe(input))
 		return (1);
 	if (has_unclosed_quotes(input))
 		return (1);
-	ft_adjust_delimiters(input);
 	if (has_redirect_error(input))
 		return (1);
 	return (0);
@@ -59,7 +59,7 @@ int	ft_has_invalid_pipe(char *input)
 		if (input && *input == '|')
 		{
 			input++;
-			if (!*input || (*input && input[1] == '|'))
+			if (!*input || *input == '|' || (*input && input[1] == '|'))
 				return (1);
 		}
 		else if (input)

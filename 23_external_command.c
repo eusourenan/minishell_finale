@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:13:50 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:22:44 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/24 17:45:12 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	set_path(char **command, t_env **env, int exit_status)
 			break ;
 		free(path_var);
 	}
-	index = (paths[index] != NULL);
+	index = (paths == NULL || paths[index] != NULL);
 	free_matrix(paths);
 	if (!path_var || !index)
 		return (12 * (path_var == NULL));
