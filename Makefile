@@ -13,7 +13,8 @@ FILES		=	0_main 1_env 2_list 3_minishell 4_input_checker\
 				24_print_functions 25_utils 26_dup_and_close\
 				27_tilde_expansion _signals _split_commands
 
-OBJS		=	$(addsuffix .o, $(FILES))
+OBJS_PATH	=	objs/
+OBJS		=	$(addsuffix .o, $(addprefix $(OBJS_PATH),$(FILES)))
 
 LIBFT		=	libft/libft.a
 
@@ -21,10 +22,13 @@ INCLUDES	=	-I libft -I .
 
 RM			=	rm -f
 
-%.o: %.c
+$(OBJS_PATH)%.o: %.c
 	cc -c $(FLAGS) $(INCLUDES) $< -o $@
 
-all: libft $(NAME)
+all: dir libft $(NAME)
+
+dir:
+	mkdir -p $(OBJS_PATH)
 
 $(NAME): $(OBJS) $(LIBFT)
 	cc $(FLAGS) $(INCLUDES) $^ $(READLINE) -o $@
@@ -37,6 +41,7 @@ clean:
 	@make -C libft clean
 
 fclean: clean
+	$(RM) -r objs
 	$(RM) $(NAME) $(LIBFT) supp logs
 
 re: fclean all
