@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:10:57 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 20:31:39 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/26 14:06:59 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,19 @@ int	has_redirect_error(char *input)
 			input = ft_strchr(input + 1, *input);
 		if (*input == '<' || *input == '>')
 		{
-			if (input[1] == '<' || input[1] == '>')
+			input++;
+			if (*input == '<' || *input == '>')
 			{
-				input++;
 				if (*input != input[-1])
 					return (1);
 				if (input[1] == '<' || input[1] == '>' || !input[1])
 					return (1);
-				if (input[1] == ' ' && (input[2] == '<' || input[2] == '>'))
+				if (input[1] == 32 && (input[2] == 60 || input[2] == 62
+						|| input[2] == '|'))
 					return (1);
 			}
+			if (*input == '|' || !*input)
+				return (1);
 		}
 		input++;
 	}
