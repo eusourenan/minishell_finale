@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:09:44 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 20:51:22 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/26 11:49:24 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	heredoc_signals(int pid)
 	else
 		signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGPIPE, SIG_IGN);
 }
 
 void	free_heredoc(int signal)
@@ -52,4 +53,5 @@ void	execution_signals(int pid)
 	else
 		signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGPIPE, SIG_IGN);
 }
