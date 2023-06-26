@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:12:10 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:16:55 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/26 16:35:21 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	set_and_free_heredoc(int pipes[], char *str, t_env **env)
 		close(p[1]);
 		free(s);
 		free_list(&e);
-		exit(127);
+		exit(130);
 	}
 	p = pipes;
 	s = str;

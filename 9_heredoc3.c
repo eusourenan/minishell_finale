@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:12:19 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 20:58:58 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/26 19:22:41 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	wait_heredoc(int pid, int *fd_heredoc, int pipes[], t_vars *to_free)
 	waitpid(pid, &to_free->exit_status, 0);
 	ft_close(pipes[1], STDIN_FILENO);
 	*fd_heredoc = pipes[0];
-	if (WIFSIGNALED(to_free->exit_status))
+	if (WIFEXITED(to_free->exit_status)
+		&& WEXITSTATUS(to_free->exit_status) == 130)
 		return (1);
 	return (0);
 }

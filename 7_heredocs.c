@@ -6,7 +6,7 @@
 /*   By:  rleite-s < rleite-s@student.42sp.org.b    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 15:11:29 by  rleite-s         #+#    #+#             */
-/*   Updated: 2023/06/24 15:16:14 by  rleite-s        ###   ########.fr       */
+/*   Updated: 2023/06/26 19:21:47 by  rleite-s        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	get_all_heredocs(char *input, t_env **env, int *fd_hdoc, t_vars *to_free)
 			prepare_and_exec_hdoc(hdoc_name, env, to_free->exit_status, pipes);
 		}
 		if (wait_heredoc(pid, fd_hdoc, pipes, to_free))
-			return (128 + WTERMSIG(to_free->exit_status));
+			return (WEXITSTATUS(to_free->exit_status));
 		input = get_heredoc_position(input);
 	}
 	if (!pid)
